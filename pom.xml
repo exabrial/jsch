@@ -4,14 +4,14 @@
     <groupId>com.github.mwiede</groupId>
     <artifactId>jsch</artifactId>
     <packaging>jar</packaging>
-    <version>2.28.9-SNAPSHOT</version>
+    <version>2.28.8.emusa.0-SNAPSHOT</version>
     <name>JSch</name>
     <url>https://github.com/mwiede/jsch</url>
     <description>JSch is a pure Java implementation of SSH2</description>
     <scm>
-        <connection>scm:git:https://github.com/mwiede/jsch.git</connection>
-        <developerConnection>scm:git:https://github.com/mwiede/jsch.git</developerConnection>
-        <url>https://github.com/mwiede/jsch</url>
+        <connection>scm:git:ssh://git@gitlab.corp.emoneyusa.com/information-technology/opensource/jsch.git</connection>
+        <developerConnection>scm:git:ssh://git@gitlab.corp.emoneyusa.com/information-technology/opensource/jsch.git</developerConnection>
+        <url>https://gitlab.corp.emoneyusa.com/information-technology/opensource/jsch</url>
         <tag>HEAD</tag>
     </scm>
     <issueManagement>
@@ -22,6 +22,16 @@
         <system>GitHub</system>
         <url>https://github.com/mwiede/jsch/actions</url>
     </ciManagement>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>emoneyusa-snapshot</id>
+            <url>https://nexus.emoneyusa.com/repository/emoneyusa-snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>emoneyusa-release</id>
+            <url>https://nexus.emoneyusa.com/repository/emoneyusa-release</url>
+        </repository>
+    </distributionManagement>
     <developers>
         <developer>
             <id>ymnk</id>
@@ -259,9 +269,11 @@
                                 <requireJavaVersion>
                                     <version>25</version>
                                 </requireJavaVersion>
+<!--
                                 <requireMavenVersion>
                                     <version>3.10.0</version>
                                 </requireMavenVersion>
+-->
                                 <dependencyConvergence />
                                 <banDuplicatePomDependencyVersions />
                                 <reactorModuleConvergence />
@@ -856,20 +868,12 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
+                                <configuration>
+                                    <keyname>871638A21A7F2C38066471420306A354336B4F0D</keyname>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>            
-                    <plugin>
-                        <groupId>org.sonatype.central</groupId>
-                        <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>0.12.0</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <publishingServerId>central</publishingServerId>
-                            <autoPublish>true</autoPublish>
-                            <waitUntil>published</waitUntil>
-                        </configuration>
-                    </plugin>                                  
                 </plugins>
             </build>
         </profile>
